@@ -1,0 +1,79 @@
+---
+import { SEO } from "astro-seo";
+import Footer from "@components/footer.astro";
+import Navbar from "@components/navbar/navbar.astro";
+import "@fontsource/inter/variable.css";
+
+export interface Props {
+  title: string;
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+
+const resolvedImageWithDomain = new URL(
+  "/opengraph.jpg",
+  Astro.site
+).toString();
+
+const { title } = Astro.props;
+
+const makeTitle = title
+  ? title + " | " + "ChatGPT For Wechat"
+  : "ChatGPT For Social - Integrate ChatGPT into your favorite social platform";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
+    <SEO
+      title="ChatGPT For Social - Integrate ChatGPT into your favorite social platform"
+      description="ChatGPT For Social is a extension that allows you to integrate ChatGPT into your WhatsApp conversations. Get quick and accurate responses to your messages with ChatGPT!"
+      canonical={canonicalURL}
+      twitter={{
+        creator: "@AIFunFace",
+        site: "https://as-notion.vercel.com",
+        card: "summary_large_image",
+      }}
+      openGraph={{
+        basic: {
+          url: canonicalURL,
+          type: "website",
+          title: "Integrate ChatGPT with WhatsApp using our extension",
+          image: resolvedImageWithDomain,
+        },
+        image: {
+          alt: "ChatGPT For Social - Homepage Screenshot",
+        },
+      }}
+    />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TZ84NX7M1H"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-TZ84NX7M1H");
+    </script>
+  </head>
+  <body>
+    <Navbar />
+    <slot />
+    <Footer />
+    <style is:global>
+      /* Improve Page speed */
+      /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
+      img {
+        content-visibility: auto;
+      }
+    </style>
+  </body>
+</html>

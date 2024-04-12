@@ -1,0 +1,83 @@
+---
+// @ts-ignore
+import { Icon } from "astro-icon";
+
+const faqItems = [
+  {
+    question: "1. What is ChatGPT For Social?",
+    answer:
+      "The ChatGPT for Social is an extension that allows you to integrate ChatGPT with your favorite conversations. It enables you to receive AI-generated responses to your messages, making your conversations more engaging and productive.",
+    link: "../blog/getting-started",
+  },
+  {
+    question: "2. How to install the extension?",
+    answer:
+      "First install ChatGPT For WhatsApp from the Chrome Store. Then, open the WhatsApp Web page and log in. Click the extension and check the status. Once the connection is established, you can start a conversation with ChatGPT in WhatsApp.",
+    link: "../blog/getting-started",
+  },
+  {
+    question: "3. How to use the extension?",
+    answer:
+      " You can use like this: @botname hello ",
+    link: "../blog/advanced-guide",
+  },
+  {
+    question: "4. Why is there no response when I @ the bot?",
+    answer:
+      "If you don't receive a response from ChatGPT, please check if the message is at least two words long. Also, make sure you are logged in to both the WhatsApp Web page and your ChatGPT account. If the problem persists, try reinstalling the plugin or contact customer support.",
+    link: "../blog/getting-started",
+  },
+  {
+    question: "5. Why are the message responses slow?",
+    answer:
+      "Slow message responses could be due to several factors, such as high server load, network issues, or limitations with the free version of the service. You can try refreshing your browser or logging out and logging back in to see if the issue resolves. Upgrading to a professional plan may also improve response times.",
+    link: "../blog/getting-started",
+  },
+  {
+    question:
+      "6. What should I do if I get an error while using the extension?",
+    answer:
+      "The error is returned by OpenAI. You can check the [ error code ] table in our blog to investigate the cause of the issue and resolve the error. If you are still unable to resolve it, please add our team's contact information to get assistance.",
+    link: "../blog/error-list",
+  },
+  // {
+  //   question: "6. How to become a professional user?",
+  //   answer:
+  //     "The Professional Plan provides an array of advantages, including the ability to predefine prompts, customize the bot's identity, characteristics, and rules, as well as adjust the number of conversations. Additionally, the plan offers faster response times, priority support, and access to exclusive features. Check the pricing page for more information on the available plans and their benefits."
+  // },
+];
+---
+
+<div class="mt-16 md:mt-0">
+  <h2
+    class="mt-16 text-xl lg:text-3xl font-bold lg:tracking-tight text-gray-900 text-center">
+    FAQ
+  </h2>
+</div>
+
+<div class="grid sm:grid-cols-1 md:grid-cols-2 mt-16 gap-4">
+  {
+    faqItems.map((item) => (
+      <div class="flex gap-4 items-start">
+        <details class="w-full bg-gray-100 rounded-lg ">
+          <summary class="cursor-pointer p-4 font-bold text-gray-900 list-none">
+            {item.question}
+            <span class="float-right text-gray-900">+</span>
+          </summary>
+          <div class="mx-4 mb-4 text-gray-600">
+            <p>{item.answer} 
+            {item.link && (
+                <a
+                  href={item.link}
+                  class="underline inline-block mr-1 text-pink-400 hover:text-pink-500">
+                  {" "}
+                  More Details{" "}
+                </a>
+
+            )}</p>
+          </div>
+        </details>
+      </div>
+    ))
+  }
+</div>

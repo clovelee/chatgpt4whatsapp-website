@@ -1,0 +1,139 @@
+---
+import Link from "@components/ui/link.astro";
+import { Icon } from "astro-icon";
+---
+
+<main class="grid place-items-center mt-8 pt-16 pb-8 md:pt-12 md:pb-16">
+  <style>
+    .primary-color {
+      background-color: #ff4dbe;
+    }
+    .platform-name-container {
+      display: inline-flex;
+      position: relative;
+    }
+
+    .platform-name {
+      position: absolute;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      white-space: nowrap;
+    }
+
+    .platform-name.visible {
+      opacity: 1;
+    }
+    .tag {
+      position: absolute;
+      top: 0;
+      left: 10;
+      font-size: 0.6rem;
+      border-radius: 4px;
+      margin-top: -10px;
+    }
+  </style>
+
+  <div
+    class="heading-container grid grid-cols-2 md:grid-cols-2 items-center gap-x-4 md:mt-8 text-2xl sm:text-2xl md:text-3xl lg:text-5xl xl:text-6xl font-bold xl:tracking-tighter w-full md:w-auto">
+    <div class="text-gray-600 text-right">ChatGPT For</div>
+    <div class="platform-name-container">
+      <div id="dynamic-text-0" class="text-gray-600 -ml-10">&nbsp;</div>
+      <div id="dynamic-text-1" class="platform-name">Social</div>
+      <div id="dynamic-text-2" class="platform-name">
+        WhatsApp <button
+          class="text-xs tag px-1 bg-green-600 rounded-sm text-white font-thin"
+          >published</button
+        >
+      </div>
+      <div id="dynamic-text-3" class="platform-name">
+        Telegram <button
+          class="text-xs tag px-1 primary-color rounded-sm text-white font-thin"
+          >coming</button
+        >
+      </div>
+      <div id="dynamic-text-4" class="platform-name">
+        Wechat <button
+          class="text-xs tag px-1 bg-green-600 rounded-sm text-white font-thin"
+          >published</button
+        >
+      </div>
+      <div id="dynamic-text-5" class="platform-name">
+        Line <button
+          class="text-xs tag px-1 primary-color rounded-sm text-white font-thin">
+          waiting</button
+        >
+      </div>
+      <div id="dynamic-text-6" class="platform-name">
+        Twitter <button
+          class="text-xs tag px-1 primary-color rounded-sm text-white font-thin"
+          >waiting</button
+        >
+      </div>
+    </div>
+  </div>
+
+  <p class="text-lg text-center mt-8 text-gray-900 max-w-xl">
+    Integrate ChatGPT into your favorite social platform and take your
+    conversations to the next level.
+  </p>
+  <div class="mt-8 flex flex-col sm:flex-row gap-4">
+    <Link
+      href="#"
+      href="https://chrome.google.com/webstore/detail/chatgpt-for-whatsapp/ajlcjjeepijhfbgkciegfdoklpcpmipk"
+      target="_blank"
+      class="flex gap-1 items-center justify-center bg-pink-500 hover:bg-pink-600 rounded-lg text-white"
+      rel="noopener">
+      <Icon class="text-white w-5 h-5" name="bx:bxl-chrome" />
+      Add to Chrome
+    </Link>
+    <Link
+      size="lg"
+      rel="noopener"
+      href="https://aow.me/chatgpt4whatsapp_download"
+      class="flex gap-1 items-center justify-center bg-pink-100 text-pink-500 rounded-lg hover:bg-pink-200"
+      target="_blank">
+      <Icon class="text-pink-500 w-5 h-5" name="bx:bxs-cloud-download" />
+      Download For Free
+    </Link>
+    <Link
+      size="lg"
+      rel="noopener"
+      href="https://aow.me/try"
+      class="flex gap-1 items-center justify-center bg-green-100 text-gray-900 rounded-lg hover:bg-green-200"
+      target="_blank">
+      Try Chatbot
+    </Link>
+  </div>
+</main>
+
+<script>
+  const platformNames = [
+    "For",
+    "Social",
+    "WhatsApp",
+    "Telegram",
+    "Wechat",
+    "Line",
+    "Twitter",
+  ];
+  const colors = [
+    "#4B5563",
+    "#ff4dbe",
+    "#25D366",
+    "#0088cc",
+    "#07C160",
+    "#00C300",
+    "#1DA1F2",
+  ];
+  let currentIndex = 0;
+
+  setInterval(() => {
+    document
+      .getElementById(`dynamic-text-${currentIndex}`)
+      .classList.remove("visible");
+    currentIndex = (currentIndex + 1) % platformNames.length;
+    const nextElement = document.getElementById(`dynamic-text-${currentIndex}`);
+    nextElement.classList.add("visible");
+    nextElement.style.color = colors[currentIndex];
+  }, 2000);
+</script>

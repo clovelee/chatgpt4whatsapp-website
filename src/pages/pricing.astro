@@ -1,0 +1,79 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
+import Pricing from "@components/pricing.astro";
+
+const pricing = [
+  {
+    name: "Basic",
+    price: "Free",
+    popular: false,
+    features: [
+      "Support ChatGPT Web",
+      "Support ChatGPT API",
+      "API context",
+      "Switch models",
+      "One-click Bot takeover",
+      "Welcome message",
+    ],
+    button: {
+      text: "Get Started",
+      link: "https://aoq.lemonsqueezy.com/checkout/buy/34733738-4d90-4773-b4cb-7437cff5321b",
+    },
+  },
+  {
+    name: "Pro",
+    price: {
+      monthly: "CN¥100",
+    },
+    popular: true,
+    features: [
+      "Everything in Free, and",
+      "Define AI identity/role",
+      "Customize Default Prompt",
+      "Support Google Bart",
+      "Customizable frequency",
+      "Customizable queue",
+      "1 day free trial",
+    ],
+    button: {
+      text: "Get Started",
+      link: "https://aoq.lemonsqueezy.com/checkout/buy/fda94447-55c8-47cb-aa7c-455f89079b2d",
+    },
+  },
+  {
+    name: "Max",
+    price: {
+      monthly: "CN¥300",
+    },
+    popular: false,
+    features: [
+      "Everything in Plus, and",
+      "Support Bing Chat",
+      "Switch multiple Bing Chat conversation models",
+      "Message rewrite",
+      "Custom proxy server",
+      "1 day free trial",
+    ],
+    button: {
+      text: "Get Started",
+      link: "https://aoq.lemonsqueezy.com/checkout/buy/49a4f2a6-9f62-4240-a3e6-d09f3fc70aaf",
+    },
+  },
+];
+---
+
+<Layout title="Pricing">
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Get Started</Fragment>
+      <Fragment slot="desc">Plans to fit your needs</Fragment>
+    </Sectionhead>
+
+    <div
+      class="grid md:grid-cols-3 gap-6 mx-auto max-w-screen-lg mt-16 rounded-lg">
+      {pricing.map((item) => <Pricing plan={item} />)}
+    </div>
+  </Container>
+</Layout>
